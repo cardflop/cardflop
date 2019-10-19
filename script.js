@@ -5,6 +5,7 @@ var coinBet = 1;
 var ns = ['A', '2', '3', '4', '5', '6', '7', '8'];
 var nsTypes = ['ACE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT'];
 var suits = ['SPADES', 'CLUBS', 'HEARTS', 'DIAMONDS'];
+var currentPercent = 0;
 
 function load() {
     deck = [];
@@ -41,13 +42,21 @@ function createNumbers() {
     }
 }
 
-function showPercentage() {
-    var percentage = (bet.length / deck.length) * 100;
-    $("#percentage").text(percentage + "% (" + bet.length + "/" + deck.length + ")");
+function calculateOdds() {
+    return bet.length / deck.length;
 }
 
-function updateCoins() {
+function updatePercentage() {
+    currentPercent = calculateOdds();
+    $("#percentage").text(currentPercent * 100 + "% (" + bet.length + "/" + deck.length + ")");
+}
+
+function updateCoins() { 
     $("#coins").text("Coins: " + coins);
+}
+
+function updateBet(bet) {
+    coinBet = bet.value;
 }
 
 function selectNumber(element) {
@@ -63,7 +72,7 @@ function selectNumber(element) {
     $(element).addClass("selected");
     $(playbutton).prop("disabled", false);
 
-    showPercentage()
+    updatePercentage()
 }
 
 
@@ -90,14 +99,22 @@ function selectSuit(suit) {
     $(temp).addClass("selected");
     $(playbutton).prop("disabled", false);
 
-    showPercentage()
+    updatePercentage()
 }
+
 
 function play() {
     if (bet.length == 0) {
         alert("Escolha uma aposta.");
         return;
     }
+
+    if(coinBet > coins) {
+        alert("Coins insuficientes");
+        return;
+    }
+
+    coins -= coinBet;
 
     var outcome = deck.pop();
 
@@ -106,10 +123,12 @@ function play() {
 
     if (bet.includes(outcome)) {
         alert("won! bet: " + bet + " outcome: " + outcome);
+        coins += coinBet + ((currentPercent) * coinBet);
     } else {
         alert("lost! bet: " + bet + " outcome: " + outcome);
     }
 
     clearBet();
-    showPercentage();
+    updateCoins();
+    updatePercentage();
 }
