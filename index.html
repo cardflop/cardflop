@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Card Flip</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body onload="load()">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Card Flip</a>
+    </nav>
+
+    <div class="container-fluid" id="main">
+        <div class="row">
+            <div class="col-8">
+                <div class="options">
+                    <div>
+                        <img src="cards/back.png" width="256" height="‭185" />
+                    </div>
+                    <div id="info">
+                        <div>
+                            <button id="playbutton" type="button" class="btn btn-dark" onclick="play()">Carta</button>
+                        </div>
+                        <div id="coins"></div>
+                        <div>
+                            To Bet: <input id="toBet" type="number" value="0"></input>
+                        </div>
+                        <div id="percentage"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div id="numbers">
+                    <div class="suits">
+                        <div>
+                            <img class="suit" onclick="selectSuit('SPADES')" src="cards/spades.svg" />
+                        </div>
+                        <div>
+                            <img class="suit" onclick="selectSuit('CLUBS')" src="cards/clubs.svg" />
+                        </div>
+                        <div>
+                            <img class="suit" onclick="selectSuit('HEARTS')" src="cards/hearts.svg" />
+                        </div>
+                        <div>
+                            <img class="suit" onclick="selectSuit('DIAMONDS')" src="cards/diamonds.svg" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

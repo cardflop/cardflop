@@ -1,0 +1,54 @@
+body {
+    background: #225437;
+}
+
+#main {
+    margin-top: 100px;
+}
+
+#numbers {
+    width: 256px;
+    color: azure;
+    background:#225437;
+}
+
+
+#numbers div div {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 32px;
+    line-height: 64px;
+    height: 64px;
+    width: 64px;
+    float: left;
+    border: 1px solid azure;
+}
+
+.suit {
+    height: 48px;
+    width: 48px;
+}
+
+#numbers div div{
+    transition: 0.25s;
+}
+
+#numbers div .selected:not(.removed){
+    background:whitesmoke;
+    color: black;
+}
+
+#numbers div div:not(.removed):hover {
+     background:whitesmoke;
+     color: black;
+     cursor: pointer;
+    }
+
+.options {
+    color: azure;
+    text-align: center;
+}
+
+#info div{
+    margin-top: 20px;
+}
